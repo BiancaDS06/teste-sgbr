@@ -53,27 +53,45 @@ const doSearch = async () => {
 watch(query, val => { if (!val) loadTrending() })
 
 const isFavorited = (id) => {
-  const stored = JSON.parse(localStorage.getItem('favorites') || '[]')
-  return stored.some(gif => gif.id === id)
+  try {
+    const stored = localStorage.getItem('favorites')
+    if (!stored) return false
+    const favorites = JSON.parse(stored)
+    return favorites.some(gif => gif.id === id)
+  } catch (error) {
+    console.error('Erro ao verificar favorito:', error)
+    return false
+  }
 }
 
 const handleFavorite = (gif, favored) => {
-  // carrega a lista existente
-  const stored = JSON.parse(localStorage.getItem('favorites') || '[]')
+  try {
+    // Carrega os favoritos existentes
+    const stored = localStorage.getItem('favorites') || '[]'
+    let favorites = JSON.parse(stored)
 
-  let updated
-  if (favored) {
-    // 👉 só adiciona se ainda não existir
-    if (!stored.find(item => item.id === gif.id)) {
-      updated = [...stored, gif]          // ← salva o GIF inteiro
-    } else {
-      updated = stored
+    if (!Array.isArray(favorites)) {
+      favorites = []
     }
-  } else {
-    updated = stored.filter(item => item.id !== gif.id)
-  }
 
-  localStorage.setItem('favorites', JSON.stringify(updated))
+    // Atualiza os favoritos
+    if (favored) {
+      // Adiciona apenas se não existir
+      if (!favorites.some(item => item.id === gif.id)) {
+        favorites.push(gif)
+      }
+    } else {
+      // Remove se existir
+      favorites = favorites.filter(item => item.id !== gif.id)
+    }
+
+    // Salva no localStorage
+    localStorage.setItem('favorites', JSON.stringify(favorites))
+  } catch (error) {
+    console.error('Erro ao atualizar favoritos:', error)
+    // Se der erro, tenta criar um array vazio
+    localStorage.setItem('favorites', JSON.stringify([]))
+  }
 }
 
 
