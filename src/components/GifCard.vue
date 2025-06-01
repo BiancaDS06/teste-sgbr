@@ -1,22 +1,23 @@
 <template>
   <q-card
-    class="w-full h-[280px] flex flex-col justify-between rounded-xl overflow-hidden shadow-md hover:shadow-lg transition duration-200"
-    flat>
+    class="full-width q-mb-md q-pa-none"
+    style="height: 300px;">
     <q-img v-if="gif?.images?.fixed_width" :src="gif.images.fixed_width.url" :alt="gif.title"
-      class="w-full h-[220px] object-cover" />
-    <div v-else class="w-full h-[220px] flex items-center justify-center text-red-500 bg-gray-100">
-      GIF sem imagem 🙈
+      style="height: 240px;" />
+    <div v-else class="column no-wrap justify-center items-center text-red-500 bg-gray-100"
+      style="height: 240px;">
+      <span class="text-h6">GIF sem imagem 🙈</span>
     </div>
 
-    <q-card-section class="flex items-center justify-between px-2" style="width: 100%;">
-      <div class="text-xs truncate"
-        style="max-height: 40px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;"
-        title="gif.title">
+    <q-card-section class="q-pa-sm">
+      <div class="text-subtitle2 text-grey-8 text-center"
+        style="max-height: 30px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;">
         {{ gif.title || 'Sem título' }}
       </div>
-
-      <q-btn dense flat round @click="toggleFavorite" :icon="isFavorited ? 'favorite' : 'favorite_border'"
-        :color="isFavorited ? 'red' : 'grey-6'" class="transition duration-200" aria-label="Favoritar" />
+      <div class="flex justify-center q-mt-xs">
+        <q-btn dense round flat @click="toggleFavorite" :icon="isFavorited ? 'favorite' : 'favorite_border'"
+          :color="isFavorited ? 'red' : 'grey'" size="sm" />
+      </div>
     </q-card-section>
   </q-card>
 </template>
@@ -44,14 +45,13 @@ function toggleFavorite() {
 }
 </script>
 
-
 <style scoped>
 .gif-card {
-  border: 1px solid #ccc;
-  padding: 8px;
-  margin: 8px;
-  width: 200px;
-  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.gif-card:hover {
+  transform: translateY(-5px);
 }
 
 .gif-card img {

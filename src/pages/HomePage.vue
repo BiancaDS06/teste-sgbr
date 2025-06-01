@@ -14,9 +14,12 @@
 
     <!-- Lista de GIFs -->
     <div v-if="!loading && gifs.length"
-      class="grid grid-cols-[repeat(auto-fill,minmax(100px,0.5fr))] gap-[6px] q-mt-xl justify-center max-w-screen-xl mx-auto">
-      <GifCard v-for="gif in gifs" :key="gif.id" :gif="gif" :initialFavorited="isFavorited(gif.id)"
-        @update:favorite="(fav) => handleFavorite(gif, fav)" />
+      class="row q-col-gutter-md justify-center q-mt-xl"
+      style="max-width: 1200px; margin: 0 auto;">
+      <div v-for="gif in gifs" :key="gif.id" class="col-12 col-sm-6 col-md-3">
+        <GifCard :gif="gif" :initialFavorited="isFavorited(gif.id)"
+          @update:favorite="(fav) => handleFavorite(gif, fav)" />
+      </div>
     </div>
 
     <!-- Nenhum resultado -->
