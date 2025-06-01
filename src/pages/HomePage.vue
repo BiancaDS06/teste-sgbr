@@ -1,23 +1,27 @@
 <template>
-  <q-page class="q-pa-md column">
+  <q-page class="q-pa-md column items-center">
     <!-- Barra de busca -->
-    <div class="flex items-center gap-2">
-      <q-input v-model="query" placeholder="Buscar GIF..." debounce="400" class="w-full"/>
-      <q-btn label="Buscar" @click="doSearch"/>
+    <div class="row items-center q-gutter-x-sm">
+      <q-input v-model="query" placeholder="Buscar GIF..." debounce="400" class="w-full" outlined dense clearable
+        @keyup.enter="doSearch" />
+      <q-btn label="Buscar" color="primary" @click="doSearch" />
     </div>
 
     <!-- Loading -->
-    <div v-if="loading" class="text-center q-mt-lg">Carregando...</div>
+    <div v-if="loading" class="text-center q-mt-lg text-primary text-lg animate-pulse">
+      Carregando...
+    </div>
 
     <!-- Lista de GIFs -->
-    <div class="grid grid-cols-[repeat(auto-fill,minmax(16rem,1fr))] gap-4 q-mt-md">
-      <GifCard
-        v-for="gif in gifs"
-        :key="gif.id"
-        :gif="gif"
-        :initialFavorited="isFavorited(gif.id)"
-        @update:favorite="(fav) => handleFavorite(gif, fav)"
-      />
+    <div v-if="!loading && gifs.length"
+      class="grid grid-cols-[repeat(auto-fill,minmax(100px,0.5fr))] gap-[6px] q-mt-xl justify-center max-w-screen-xl mx-auto">
+      <GifCard v-for="gif in gifs" :key="gif.id" :gif="gif" :initialFavorited="isFavorited(gif.id)"
+        @update:favorite="(fav) => handleFavorite(gif, fav)" />
+    </div>
+
+    <!-- Nenhum resultado -->
+    <div v-else-if="!loading && !gifs.length" class="text-center text-gray-500 q-mt-xl">
+      Nenhum GIF encontrado.
     </div>
   </q-page>
 </template>
@@ -73,4 +77,3 @@ const handleFavorite = (gif, favored) => {
 
 loadTrending()
 </script>
-
