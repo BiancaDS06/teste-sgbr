@@ -11,7 +11,7 @@ export function useGiphy() {
   const getTrending = async () => {
     loading.value = true
     try {
-      const res = await fetch(`${BASE_URL}/gifs/trending?api_key=${API_KEY}&limit=10`)
+      const res = await fetch(`${BASE_URL}/gifs/trending?api_key=${API_KEY}&limit=12`)
       const data = await res.json()
       return data.data
     } catch (err) {
