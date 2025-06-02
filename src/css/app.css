@@ -1,1 +1,7 @@
 /* app global css */
+
+.q-item--active-custom {
+    background-color: #0052cc; /* cor azul como na imagem */
+    border-radius: 12px;
+    color: white;
+  }
