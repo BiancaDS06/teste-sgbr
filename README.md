@@ -46,7 +46,5 @@ IMPORTANTE:
 Crie um arquivo .env na raiz do projeto com o conteúdo abaixo antes de rodar o servidor:
 
 env
-Copiar
-Editar
 VITE_GIPHY_API_KEY=sua_chave_api_aqui
 Você pode obter uma chave gratuita em: https://developers.giphy.com
