@@ -11,6 +11,8 @@ export const useGiphyStore = defineStore('giphy', {
     favorites: [],
     loading: false,
     error: null,
+    categories: [],
+    selectedCategory: null,
   }),
 
   getters: {
@@ -61,7 +63,7 @@ export const useGiphyStore = defineStore('giphy', {
       }
     },
 
-    async getCategories() {
+    async loadCategories() {
       this.loading = true
       try {
         const response = await axios.get(`${BASE_URL}/gifs/categories`, {
@@ -69,11 +71,29 @@ export const useGiphyStore = defineStore('giphy', {
             api_key: API_KEY
           }
         })
-        return response.data.data
+        this.categories = response.data.data
       } catch (error) {
         this.error = error.message
-        console.error('Erro ao buscar categorias:', error)
-        throw error
+        console.error('Erro ao carregar categorias:', error)
+      } finally {
+        this.loading = false
+      }
+    },
+
+    async getGifsByCategoryName(name) {
+      this.loading = true
+      try {
+        const response = await axios.get(`${BASE_URL}/gifs/search`, {
+          params: {
+            api_key: API_KEY,
+            q: name,  // busca por nome da categoria, ex: "Cooking"
+            limit: 12
+          }
+        })
+        this.gifs = response.data.data
+      } catch (error) {
+        this.error = error.message
+        console.error('Erro ao buscar GIFs por categoria:', error)
       } finally {
         this.loading = false
       }
