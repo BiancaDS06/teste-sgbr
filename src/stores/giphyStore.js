@@ -49,7 +49,7 @@ export const useGiphyStore = defineStore('giphy', {
           params: {
             api_key: API_KEY,
             q: query,
-            limit: 25
+            limit: 12
           }
         })
         this.gifs = response.data.data

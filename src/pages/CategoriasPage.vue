@@ -38,7 +38,7 @@ const handleFavorite = (gif) => {
         >
           <q-card class="q-mb-md cursor-pointer" @click="selectCategory(category)">
             <q-img
-              :src="'https://via.placeholder.com/400x200?text=' + category.name"
+              :src="category.gif.images.original.webp"
               style="height: 200px;"
             />
             <q-card-section>
