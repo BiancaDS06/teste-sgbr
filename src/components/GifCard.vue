@@ -2,11 +2,13 @@
   <q-card
     class="full-width q-mb-md q-pa-none"
     style="height: 300px;">
-    <q-img v-if="gif?.images?.fixed_width" :src="gif.images.fixed_width.url" :alt="gif.title"
-      style="height: 240px;" />
-    <div v-else class="column no-wrap justify-center items-center text-red-500 bg-gray-100"
-      style="height: 240px;">
-      <span class="text-h6">GIF sem imagem 🙈</span>
+    <div class="column no-wrap justify-center items-center">
+      <q-img v-if="gif?.images?.fixed_width" :src="gif.images.fixed_width.url" :alt="gif.title"
+        style="height: 240px;" />
+      <div v-else class="text-red-500 bg-gray-100"
+        style="height: 240px;">
+        <span class="text-h6">GIF sem imagem 🙈</span>
+      </div>
     </div>
 
     <q-card-section class="q-pa-sm">
