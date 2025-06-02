@@ -1,4 +1,5 @@
 <template>
+  <h1 class="text-h5 q-pa-md">Favoritos</h1>
   <q-page class="q-pa-md">
     <div v-if="!store.loading && store.favorites.length" class="row q-col-gutter-md justify-center q-mt-xl"
       style="max-width: 1200px; margin: 0 auto;">

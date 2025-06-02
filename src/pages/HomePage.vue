@@ -1,4 +1,5 @@
 <template>
+  <h1 class="text-h5 q-pa-md">Home</h1>
   <q-page class="q-pa-md column items-center">
     <div class="row items-center q-gutter-x-sm">
       <q-input v-model="query" placeholder="Buscar GIF..." debounce="400" class="w-full" outlined dense clearable
