@@ -1,40 +1,50 @@
-# SG Master Web (sgweb)
+# Projeto Giphy Explorer - Teste Técnico SGBR
 
-Usarei a chave da API do GIPHY para autenticar requisições e buscar GIFs por tendência, categoria ou busca personalizada na aplicação feita com Quasar 2 e Vue 3.
+Este projeto foi desenvolvido como parte de um teste técnico para a vaga de Programador Web Front-End na **SGBR® Sistemas**, empresa especializada em soluções de automação comercial.
 
-## Install the dependencies
+A aplicação consome a **API do GIPHY** e permite aos usuários:
+
+- Visualizar GIFs em alta (trending)  
+- Pesquisar GIFs por palavra-chave  
+- Explorar GIFs por categoria  
+- Adicionar e remover GIFs de uma lista de favoritos, com persistência local  
+
+---
+
+## 🛠️ Tecnologias utilizadas
+
+- [Vue 3](https://vuejs.org/) (Composition API)  
+- [Quasar Framework 2](https://quasar.dev/)  
+- [Tailwind CSS](https://tailwindcss.com/)  
+- [Pinia](https://pinia.vuejs.org/)  
+- [Axios](https://axios-http.com/)  
+- [Vue Router](https://router.vuejs.org/)  
+- [LocalStorage (plugin Quasar)](https://quasar.dev/quasar-plugins/web-storage)  
+- [GIPHY API](https://developers.giphy.com)  
+
+---
+
+## ⚙️ Pré-requisitos
+
+Antes de começar, você precisa ter instalado na sua máquina:
+
+- Node.js (v18 ou superior)  
+- NPM ou Yarn  
+
+---
+
+## 🚀 Instalação e Execução
+
 ```bash
-yarn
-# or
+git clone https://github.com/seu-usuario/seu-repositorio.git
+cd seu-repositorio
 npm install
-```
-
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
-```bash
+# ou yarn install
 quasar dev
-```
 
+IMPORTANTE:
+Crie um arquivo .env na raiz do projeto com o conteúdo abaixo antes de rodar o servidor:
 
-### Lint the files
-```bash
-yarn lint
-# or
-npm run lint
-```
-
-
-### Format the files
-```bash
-yarn format
-# or
-npm run format
-```
-
-
-### Build the app for production
-```bash
-quasar build
-```
-
-### Customize the configuration
-See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
+env
+VITE_GIPHY_API_KEY=sua_chave_api_aqui
+Você pode obter uma chave gratuita em: https://developers.giphy.com
