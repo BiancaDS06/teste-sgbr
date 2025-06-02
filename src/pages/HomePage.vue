@@ -1,20 +1,16 @@
 <template>
   <q-page class="q-pa-md column items-center">
-    <!-- Barra de busca -->
     <div class="row items-center q-gutter-x-sm">
       <q-input v-model="query" placeholder="Buscar GIF..." debounce="400" class="w-full" outlined dense clearable
         @keyup.enter="doSearch" />
       <q-btn label="Buscar" color="primary" @click="doSearch" />
     </div>
 
-    <!-- Loading -->
-    <div v-if="store.loading" class="text-center q-mt-lg text-primary text-lg animate-pulse">
+    <p v-if="store.loading" class="text-center q-mt-lg text-primary text-lg animate-pulse">
       Carregando...
-    </div>
+    </p>
 
-    <!-- Lista de GIFs -->
-    <div v-if="!store.loading && store.gifs.length"
-      class="row q-col-gutter-md justify-center q-mt-xl"
+    <div v-if="!store.loading && store.gifs.length" class="row q-col-gutter-md justify-center q-mt-xl"
       style="max-width: 1200px; margin: 0 auto;">
       <div v-for="gif in store.gifs" :key="gif.id" class="col-12 col-sm-6 col-md-3">
         <GifCard :gif="gif" :initialFavorited="store.isFavorited(gif.id)"
@@ -22,10 +18,9 @@
       </div>
     </div>
 
-    <!-- Nenhum resultado -->
-    <div v-else-if="!store.loading && !store.gifs.length" class="text-center text-gray-500 q-mt-xl">
+    <p v-else-if="!store.loading && !store.gifs.length" class="text-center text-gray-500 q-mt-xl">
       Nenhum GIF encontrado.
-    </div>
+    </p>
   </q-page>
 </template>
 

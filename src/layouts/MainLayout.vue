@@ -4,9 +4,7 @@
     <q-header elevated class="bg-primary text-white">
       <q-toolbar class="w-full items-center justify-between">
         <q-btn flat dense round icon="menu" aria-label="Menu" class="q-mr-sm" @click="toggleDrawer" />
-        <!-- Nome da empresa -->
         <q-toolbar-title class="text-lg font-semibold">SG Master web</q-toolbar-title>
-        <!-- Nome do desenvolvedor -->
         <div class="row items-center q-gutter-x-sm">
           <div class="text-sm text-gray-500">Desenvolvido por Bianca Dias</div>
           <q-avatar size="40px">
