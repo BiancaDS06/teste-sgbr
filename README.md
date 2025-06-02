@@ -28,7 +28,7 @@ A aplicação consome a **API do GIPHY** e permite aos usuários:
 
 Antes de começar, você precisa ter instalado na sua máquina:
 
-- Node.js (v16 ou superior)  
+- Node.js (v18 ou superior)  
 - NPM ou Yarn  
 
 ---
